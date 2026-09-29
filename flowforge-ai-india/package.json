@@ -1,0 +1,16 @@
+{
+  "name": "flowforge-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An explainable business process automation planner with ROI analysis.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

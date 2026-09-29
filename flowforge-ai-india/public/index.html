@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plan automation for Indian business workflows with readiness scores, rupee savings estimates, and a 30-day roadmap.">
+  <title>FlowForge AI | Automation Planner</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="FlowForge AI home"><span class="brand-mark">F</span><span>FlowForge <b>AI</b></span></a>
+    <div class="top-actions"><span class="api-state"><i></i> Analysis engine online</span><button class="icon-button" id="themeButton" type="button" title="Toggle theme" aria-label="Toggle theme">◐</button></div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <p class="eyebrow">BUILT FOR INDIAN BUSINESSES</p>
+        <h1>See what your next automation could save.</h1>
+      </div>
+      <p class="intro-copy">Map a recurring process, from GST invoices to WhatsApp support. See its readiness, estimated rupee savings, and a clear rollout plan.</p>
+    </section>
+
+    <section class="workspace">
+      <form id="assessmentForm" class="planner-panel">
+        <div class="panel-heading"><span>01</span><div><h2>Process profile</h2><p>Use monthly figures for a useful estimate.</p></div></div>
+
+        <label class="field wide"><span>Process name</span><input name="name" value="GST invoice approval" maxlength="80" required></label>
+        <label class="field"><span>Business area</span><select name="processType"><option value="finance">GST & invoicing</option><option value="support">Customer support</option><option value="hr">HR & onboarding</option><option value="sales">Sales operations</option><option value="inventory">Inventory & operations</option><option value="other">Other operations</option></select></label>
+        <label class="field"><span>Runs per month</span><input name="frequency" type="number" value="240" min="1" max="100000" required></label>
+        <label class="field"><span>Minutes per run</span><input name="minutesPerRun" type="number" value="12" min="1" max="1440" required></label>
+        <label class="field"><span>People involved</span><input name="people" type="number" value="2" min="1" max="500" required></label>
+        <label class="field"><span>Staff cost per hour (₹)</span><input name="hourlyCost" type="number" value="350" min="1" max="10000" required></label>
+        <label class="field"><span>Systems touched</span><input name="systems" type="number" value="3" min="1" max="30" required></label>
+        <label class="field range-field"><span><span>Exception rate</span><output id="exceptionOutput">12%</output></span><input name="exceptionRate" id="exceptionRate" type="range" value="12" min="0" max="80"></label>
+        <fieldset class="choice-group"><legend>Are decisions rule-based?</legend><label><input type="radio" name="ruleBased" value="yes" checked><span>Mostly</span></label><label><input type="radio" name="ruleBased" value="partly"><span>Partly</span></label><label><input type="radio" name="ruleBased" value="no"><span>Rarely</span></label></fieldset>
+        <fieldset class="choice-group"><legend>Are inputs already digital?</legend><label><input type="radio" name="digitalInput" value="yes" checked><span>Yes</span></label><label><input type="radio" name="digitalInput" value="partly"><span>Mixed</span></label><label><input type="radio" name="digitalInput" value="no"><span>No</span></label></fieldset>
+        <button class="primary-button" type="submit"><span>Generate automation plan</span><b aria-hidden="true">↗</b></button>
+        <p class="form-error" id="formError" role="alert"></p>
+      </form>
+
+      <section class="result-panel" id="resultPanel" aria-live="polite">
+        <div class="empty-state" id="emptyState"><div class="flow-visual" aria-hidden="true"><div class="flow-node input-node"><span>01</span><b>INPUT</b><small>Invoices · tickets</small></div><div class="flow-link"><i></i></div><div class="flow-node engine-node"><span>02</span><b>WORKFLOW</b><small>Rules · review</small></div><div class="flow-link"><i></i></div><div class="flow-node outcome-node"><span>03</span><b>VALUE</b><small>Time · ₹ saved</small></div></div><h2>Your opportunity report appears here</h2><p>Complete the process profile to see the analysis.</p></div>
+        <div class="results" id="results" hidden></div>
+      </section>
+    </section>
+
+    <section class="history-section">
+      <div class="section-heading"><div><p class="eyebrow">RECENT WORK</p><h2>Saved assessments</h2></div><button id="refreshButton" class="text-button" type="button">Refresh</button></div>
+      <div id="history" class="history-grid"><p class="history-empty">No assessments saved yet.</p></div>
+    </section>
+  </main>
+  <footer><span>FlowForge AI</span><p>Planning estimates for Indian businesses.</p><p>New assessments in INR</p></footer>
+  <script src="/app.js" defer></script>
+</body>
+</html>
